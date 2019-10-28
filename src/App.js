@@ -19,29 +19,27 @@ class App extends Component {
     };
   }
   
-//   componentDidMount(){
-//     axios.get('../jsonData/presentList.json')
-//     .then( response => {
-//       this.setState({
-//         presentList: response.data
-//     });
-//     console.log(this.state);
-//   })
-//   .catch(function (error) {
-//     console.log(error);
-//   });
+  componentDidMount(){
+    axios.get('http://localhost:3001/present')
+    .then( response => {
+      this.setState({
+        presentList: response.data
+    });
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 
-//   axios.get('../jsonData/quittingList.json')
-//   .then( response => {
-//     this.setState({
-//       quittingList: response.data
-//   });
-//   console.log(this.state);
-// })
-// .catch(function (error) {
-//   console.log(error);
-// });
-//   }
+  axios.get('http://localhost:3001/retired')
+  .then( response => {
+    this.setState({
+      quittingList: response.data
+  });
+})
+.catch(function (error) {
+  console.log(error);
+});
+}
 
 	render() {
   return (
