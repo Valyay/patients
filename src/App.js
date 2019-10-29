@@ -3,13 +3,13 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  Redirect
+  Link
 } from "react-router-dom";
 import axios from 'axios';
 import _ from "lodash";
 import Present from './components/Present';
 import Retired from './components/Retired';
+import Info from './components/Info';
 import './App.css';
 
 class App extends Component {
@@ -17,7 +17,8 @@ class App extends Component {
 		super(props);
 		this.state = {
       presentList: [],
-      quittingList: []
+      quittingList: [],
+      row: null,
     };
   }
   
@@ -43,10 +44,19 @@ class App extends Component {
 });
 }
 
+onRowSelect = row => (
+  this.setState({row})
+)
+
+getNumberYears = date => {
+  return Math.abs(new Date(Date.now() - Date.parse(date)).getUTCFullYear() - 1970)
+}
+
 	render() {
   return (
     <Router>
       <div className = "app-component">
+        <Info patient={this.state.row} getNumberYears={this.getNumberYears} />
       <div className = "table-component">
  <nav>
  <ul className="menu">
@@ -60,10 +70,10 @@ class App extends Component {
  </nav>
 <Switch>
           <Route path="/present">
-          <Present presentList={this.state.presentList}/>
+          <Present presentList={this.state.presentList} onRowSelect={this.onRowSelect}/>
           </Route> 
           <Route path="/retired">
-          <Retired quittingList={this.state.quittingList}/>
+          <Retired quittingList={this.state.quittingList} onRowSelect={this.onRowSelect}/>
           </Route> 
         </Switch>
 </div>

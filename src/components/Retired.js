@@ -18,7 +18,7 @@ export default function Retired(props) {
       </thead>
       <tbody>
         {props.quittingList.map(patient => (
-          <tr key={patient.historyNumber}>
+          <tr key={patient.historyNumber} onClick={props.onRowSelect.bind(null, patient)}>
             <td className = "number">{patient.historyNumber}</td>
             <td>{patient.firstName} {patient.lastName} {patient.patrName}</td>
             <td>{patient.cause}</td>
