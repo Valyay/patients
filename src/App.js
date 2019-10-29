@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  NavLink
 } from "react-router-dom";
 import axios from 'axios';
 import _ from "lodash";
@@ -18,7 +18,7 @@ class App extends Component {
 		this.state = {
       presentList: [],
       quittingList: [],
-      row: null,
+      row: null
     };
   }
   
@@ -54,32 +54,47 @@ getNumberYears = date => {
 
 	render() {
   return (
-    <Router>
-      <div className = "app-component">
-        <Info patient={this.state.row} getNumberYears={this.getNumberYears} />
-      <div className = "table-component">
- <nav>
- <ul className="menu">
-          <li className="menu-item">
-            <Link activeClassName="menu-item-a" to="/present">ПРИСУТСТВУЮТ({this.state.presentList.length})</Link>
-          </li>
-          <li className="menu-item">
-            <Link activeClassName="menu-item-a" to="/retired">ВЫБЫВШИЕ({this.state.quittingList.length})</Link>
-          </li>
-        </ul>
- </nav>
-<Switch>
-          <Route path="/present">
-          <Present presentList={this.state.presentList} onRowSelect={this.onRowSelect}/>
-          </Route> 
-          <Route path="/retired">
-          <Retired quittingList={this.state.quittingList} onRowSelect={this.onRowSelect}/>
-          </Route> 
-        </Switch>
-</div>
-      </div>
-    </Router>
-  );
+		<Router>
+			<div className="app-component">
+				<div className="info-component">
+					<Info patient={this.state.row} getNumberYears={this.getNumberYears} />
+				</div>
+				<div className="table-component">
+					<nav className="menu">
+						<NavLink
+							className="menu-item"
+							activeClassName="menu-item-active"
+							to="/present"
+						>
+							ПРИСУТСТВУЮТ({this.state.presentList.length})
+						</NavLink>
+						<NavLink
+							className="menu-item"
+							activeClassName="menu-item-active"
+							to="/retired"
+						>
+							ВЫБЫВШИЕ({this.state.quittingList.length})
+						</NavLink>
+					</nav>
+					<Switch>
+						<Route path="/present">
+							<Present
+								presentList={this.state.presentList}
+								onRowSelect={this.onRowSelect}
+							/>
+						</Route>
+						<Route path="/retired">
+							<Retired
+								quittingList={this.state.quittingList}
+								onRowSelect={this.onRowSelect}
+                isActive={this.state.isActive}
+							/>
+						</Route>
+					</Switch>
+				</div>
+			</div>
+		</Router>
+	);
   }
 }
 
