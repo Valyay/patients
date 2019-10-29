@@ -15,7 +15,8 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-
+      presentList: [],
+      quittingList: []
     };
   }
   
@@ -58,8 +59,12 @@ class App extends Component {
         <hr />
 
         <Switch>
-          <Redirect from="/" to="/present" component={Present}/>
-          <Route path="/retired" component={Retired}/>
+          <Route path="/present">
+          <Present presentList={this.state.presentList}/>
+          </Route> 
+          <Route path="/retired">
+          <Retired quittingList={this.state.quittingList}/>
+          </Route> 
         </Switch>
       </div>
     </Router>
