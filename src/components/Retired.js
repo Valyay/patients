@@ -2,11 +2,11 @@ import React from 'react';
 
 export default function Retired(props) {
   return (
-    <table className="table table-hover table-fixed">
-      <thead className="thead-dark">
+    <table className="table table-hover">
+      <thead>
         <tr>
           <th>
-            №
+          № ИБ
           </th>
           <th>
             ФИО
@@ -19,7 +19,7 @@ export default function Retired(props) {
       <tbody>
         {props.quittingList.map(patient => (
           <tr key={patient.historyNumber}>
-            <td>{patient.historyNumber}</td>
+            <td className = "number">{patient.historyNumber}</td>
             <td>{patient.firstName} {patient.lastName} {patient.patrName}</td>
             <td>{patient.cause}</td>
           </tr>
