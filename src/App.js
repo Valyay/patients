@@ -60,7 +60,7 @@ getNumberYears = date => {
 
 	render() {
   return (
-		<Router>
+    <>
     <Redirect from="/" to="present" component={Present} />
 			<div className="app-component">
 				<div className="info-component">
@@ -101,7 +101,7 @@ getNumberYears = date => {
 					</Switch>
 				</div>
 			</div>
-		</Router>
+      </>
 	);
   }
 }
