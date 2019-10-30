@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  NavLink
+  NavLink,
+  Redirect
 } from "react-router-dom";
 import axios from 'axios';
 import _ from "lodash";
@@ -60,6 +61,7 @@ getNumberYears = date => {
 	render() {
   return (
 		<Router>
+    <Redirect from="/" to="present" component={Present} />
 			<div className="app-component">
 				<div className="info-component">
 					<Info patient={this.state.row} getNumberYears={this.getNumberYears} />
