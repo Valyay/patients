@@ -1,5 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Используемые технологии
+React(react-router-dom, react-bootstrap)<br/>
+Express(cors,body-parser)<br/>
+Lodash<br/>
+Material-UI<br/>
+Bootstrap<br/>
+Axios<br/>
+
 ## Available Scripts
 
 In the project directory, you can run:
