@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   NavLink,
-  Redirect
+  Redirect,
+  withRouter
 } from "react-router-dom";
 import axios from 'axios';
 import _ from "lodash";
@@ -44,6 +44,8 @@ class App extends Component {
 .catch(function (error) {
   console.log(error);
 });
+
+  this.props.history.listen((location, action) => this.setState({row: null}));
 }
 
 onRowSelect = row => {
@@ -106,4 +108,4 @@ getNumberYears = date => {
   }
 }
 
-export default App;
+export default withRouter(App);

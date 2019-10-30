@@ -5,9 +5,8 @@
 .info-component{
   width: 49%;
   border: 2px solid #29b6f6;
-    margin: 2em auto;
-    padding: 1em;
-    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+  margin: 2em auto;
+  box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
 }
 .table-component{
   width: 49%;
