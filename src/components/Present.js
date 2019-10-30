@@ -3,7 +3,7 @@ import '../App.css';
 
 export default function Present(props) {
   return (
-    <table className="table table-hover">
+    <table className="table">
       <thead>
         <tr>
           <th>
@@ -20,7 +20,8 @@ export default function Present(props) {
       <tbody>
         {props.presentList.map((patient,index) => (
           <tr key={patient.historyNumber}
-           onClick={props.onRowSelect.bind(null, patient)}>
+           onClick={props.onRowSelect.bind(this, patient)}
+            className={props.rowSelected.historyNumber === patient.historyNumber ? "rowSelected" : "" }>
             <td className = "number">{patient.historyNumber}</td>
             <td>{patient.firstName} {patient.lastName} {patient.patrName}</td>
             <td>{patient.bedNumber}</td>

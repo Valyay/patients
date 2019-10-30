@@ -43,5 +43,5 @@ tr{
 }
 .rowSelected{
   border-left: 3px solid #29b6f6;
-  background-color: gray;
+  background-color: LightGray;
 }

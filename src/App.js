@@ -18,7 +18,8 @@ class App extends Component {
 		this.state = {
       presentList: [],
       quittingList: [],
-      row: null
+      row: null,
+      rowSelected: -1
     };
   }
   
@@ -44,9 +45,13 @@ class App extends Component {
 });
 }
 
-onRowSelect = row => (
-  this.setState({row})
-)
+onRowSelect = row => {
+  this.setState({row});
+  if (row !== undefined) {
+    this.setState({ rowSelected: row  });
+  }
+}
+
 
 getNumberYears = date => {
   return Math.abs(new Date(Date.now() - Date.parse(date)).getUTCFullYear() - 1970)
@@ -81,13 +86,14 @@ getNumberYears = date => {
 							<Present
 								presentList={this.state.presentList}
 								onRowSelect={this.onRowSelect}
+                rowSelected={this.state.rowSelected}
 							/>
 						</Route>
 						<Route path="/retired">
 							<Retired
 								quittingList={this.state.quittingList}
 								onRowSelect={this.onRowSelect}
-                isActive={this.state.isActive}
+                rowSelected={this.state.rowSelected}
 							/>
 						</Route>
 					</Switch>
